@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Users, Building2, UserCircle, BarChart3 } from 'lucide-react';
+import { LayoutDashboard, Users, Building2, UserCircle, BarChart3, Bed, Calendar, Building } from 'lucide-react';
 
 const Sidebar = () => {
   const navItems = [
@@ -8,6 +8,9 @@ const Sidebar = () => {
     { name: 'Rooms & Supplies', path: '/rooms', icon: Building2 },
     { name: 'Patients', path: '/patients', icon: UserCircle },
     { name: 'Analytics', path: '/analytics', icon: BarChart3 },
+    { name: 'Bed Management', path: '/beds', icon: Bed },
+    { name: 'OR Scheduling', path: '/or-scheduling', icon: Calendar },
+    { name: 'Ministry Dashboard', path: '/government', icon: Building },
   ];
 
   return (

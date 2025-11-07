@@ -15,6 +15,11 @@ import Appointments from "./pages/Appointments";
 import Records from "./pages/Records";
 import Feedback from "./pages/Feedback";
 import NotFound from "./pages/NotFound";
+import BedManagement from "./pages/BedManagement";
+import ORScheduling from "./pages/ORScheduling";
+import Government from "./pages/Government";
+import SpecialistSearch from "./pages/SpecialistSearch";
+import HelpCenter from "./pages/HelpCenter";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +38,9 @@ const App = () => (
               <Route path="/rooms" element={<RoomsSupplies />} />
               <Route path="/patients" element={<Patients />} />
               <Route path="/analytics" element={<Analytics />} />
+              <Route path="/beds" element={<BedManagement />} />
+              <Route path="/or-scheduling" element={<ORScheduling />} />
+              <Route path="/government" element={<Government />} />
             </Route>
             
             {/* Patient App Routes (no sidebar) */}
@@ -40,6 +48,8 @@ const App = () => (
             <Route path="/appointments" element={<Appointments />} />
             <Route path="/records" element={<Records />} />
             <Route path="/feedback" element={<Feedback />} />
+            <Route path="/specialist-search" element={<SpecialistSearch />} />
+            <Route path="/help" element={<HelpCenter />} />
             
             <Route path="*" element={<NotFound />} />
           </Routes>
