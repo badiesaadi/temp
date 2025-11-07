@@ -1,8 +1,12 @@
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useAuth } from '@/context/AuthContext';
-import Sidebar from './Sidebar';
 
-const DashboardLayout = () => {
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+  allowedRoles?: string[];
+}
+
+export const ProtectedRoute = ({ children, allowedRoles }: ProtectedRouteProps) => {
   const { user, loading } = useAuth();
 
   if (loading) {
@@ -17,12 +21,9 @@ const DashboardLayout = () => {
     return <Navigate to="/login" replace />;
   }
 
-  return (
-    <div className="flex min-h-screen w-full">
-      <Sidebar />
-      <Outlet />
-    </div>
-  );
-};
+  if (allowedRoles && !allowedRoles.includes(user.role)) {
+    return <Navigate to="/unauthorized" replace />;
+  }
 
-export default DashboardLayout;
+  return <>{children}</>;
+};
