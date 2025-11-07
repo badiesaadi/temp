@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
-import Sidebar from "./components/Sidebar";
+import DashboardLayout from "./components/DashboardLayout";
 import Dashboard from "./pages/Dashboard";
 import MedStaff from "./pages/MedStaff";
 import RoomsSupplies from "./pages/RoomsSupplies";
@@ -26,37 +26,14 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            {/* Dashboard Routes with Sidebar */}
-            <Route path="/" element={
-              <div className="flex min-h-screen w-full">
-                <Sidebar />
-                <Dashboard />
-              </div>
-            } />
-            <Route path="/staff" element={
-              <div className="flex min-h-screen w-full">
-                <Sidebar />
-                <MedStaff />
-              </div>
-            } />
-            <Route path="/rooms" element={
-              <div className="flex min-h-screen w-full">
-                <Sidebar />
-                <RoomsSupplies />
-              </div>
-            } />
-            <Route path="/patients" element={
-              <div className="flex min-h-screen w-full">
-                <Sidebar />
-                <Patients />
-              </div>
-            } />
-            <Route path="/analytics" element={
-              <div className="flex min-h-screen w-full">
-                <Sidebar />
-                <Analytics />
-              </div>
-            } />
+            {/* Dashboard Routes with Sidebar Layout */}
+            <Route element={<DashboardLayout />}>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/staff" element={<MedStaff />} />
+              <Route path="/rooms" element={<RoomsSupplies />} />
+              <Route path="/patients" element={<Patients />} />
+              <Route path="/analytics" element={<Analytics />} />
+            </Route>
             
             {/* Patient App Routes (no sidebar) */}
             <Route path="/chat" element={<Chat />} />
